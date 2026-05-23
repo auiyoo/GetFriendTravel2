@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Dashboard — แบบสอบถามความต้องการ</title>
+  <link rel="stylesheet" href="css/questionnaire.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="q-header">
+  <div class="q-header-inner">
+    <div class="q-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    <div>
+      <div class="q-org">IT Dashboard Assessment</div>
+      <div class="q-sub">แบบสอบถามประเมินความต้องการ</div>
+    </div>
+    <div class="q-save-badge" id="saveBadge" style="display:none">✓ บันทึกอัตโนมัติ</div>
+    <a href="index.html" class="q-dash-link" title="ไปยัง Dashboard">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="q-progress-wrap">
+  <div class="q-progress-bar" id="progressBar" style="width:12.5%"></div>
+</div>
+<div class="q-steps" id="stepsRow">
+  <!-- filled by JS -->
+</div>
+
+<!-- FORM BODY -->
+<main class="q-main">
+  <form id="qForm" novalidate>
+
+    <!-- ════ SECTION 1 ════ -->
+    <section class="q-section active" data-section="1">
+      <div class="section-header">
+        <span class="section-num">1</span>
+        <div>
+          <div class="section-title">ข้อมูลทั่วไปขององค์กร</div>
+          <div class="section-sub">General Organization Information</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">1.1 ชื่อองค์กร / บริษัท</label>
+        <input type="text" class="q-input" name="orgName" placeholder="กรอกชื่อองค์กร / บริษัท" required>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">1.2 ประเภทธุรกิจ</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="bizType" value="manufacturing"> การผลิต (Manufacturing)</label>
+          <label class="q-check"><input type="checkbox" name="bizType" value="retail"> ค้าปลีก / ค้าส่ง (Retail / Wholesale)</label>
+          <label class="q-check"><input type="checkbox" name="bizType" value="service"> บริการ (Service)</label>
+          <label class="q-check"><input type="checkbox" name="bizType" value="finance"> การเงิน / ธนาคาร (Finance / Banking)</label>
+          <label class="q-check"><input type="checkbox" name="bizType" value="healthcare"> สาธารณสุข (Healthcare)</label>
+          <label class="q-check"><input type="checkbox" name="bizType" value="logistics"> โลจิสติกส์ / ขนส่ง (Logistics)</label>
+          <label class="q-check"><input type="checkbox" name="bizType" value="realestate"> อสังหาริมทรัพย์ (Real Estate)</label>
+          <label class="q-check other-check"><input type="checkbox" name="bizType" value="other"> อื่นๆ: <input type="text" class="inline-input" name="bizTypeOther" placeholder="ระบุ..."></label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">1.3 จำนวนพนักงานทั้งหมด</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="empCount" value="1-50"> 1–50 คน</label>
+          <label class="q-radio"><input type="radio" name="empCount" value="51-200"> 51–200 คน</label>
+          <label class="q-radio"><input type="radio" name="empCount" value="201-500"> 201–500 คน</label>
+          <label class="q-radio"><input type="radio" name="empCount" value="501-1000"> 501–1,000 คน</label>
+          <label class="q-radio"><input type="radio" name="empCount" value="1000+"> มากกว่า 1,000 คน</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">1.4 จำนวนสาขา / ที่ตั้งที่ต้องการเชื่อมข้อมูล</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="branches" value="1"> 1 แห่ง (สำนักงานใหญ่)</label>
+          <label class="q-radio"><input type="radio" name="branches" value="2-5"> 2–5 แห่ง</label>
+          <label class="q-radio"><input type="radio" name="branches" value="6-20"> 6–20 แห่ง</label>
+          <label class="q-radio"><input type="radio" name="branches" value="20+"> มากกว่า 20 แห่ง</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">1.5 ชื่อ / ตำแหน่ง / เบอร์โทร / อีเมล ผู้ให้ข้อมูล</label>
+        <div class="q-row2">
+          <input type="text" class="q-input" name="contactName" placeholder="ชื่อ – นามสกุล">
+          <input type="text" class="q-input" name="contactPosition" placeholder="ตำแหน่ง">
+          <input type="text" class="q-input" name="contactPhone" placeholder="เบอร์โทร">
+          <input type="email" class="q-input" name="contactEmail" placeholder="อีเมล">
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 2 ════ -->
+    <section class="q-section" data-section="2">
+      <div class="section-header">
+        <span class="section-num">2</span>
+        <div>
+          <div class="section-title">วัตถุประสงค์และเป้าหมาย</div>
+          <div class="section-sub">Objectives & Goals</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">2.1 เหตุผลหลักที่ต้องการ IT Dashboard (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="reason" value="realtime"> เห็นภาพรวมธุรกิจแบบ Real-time</label>
+          <label class="q-check"><input type="checkbox" name="reason" value="reduce_manual"> ลดการทำรายงาน Manual / Excel</label>
+          <label class="q-check"><input type="checkbox" name="reason" value="data_driven"> ตัดสินใจโดยใช้ข้อมูล (Data-driven Decision)</label>
+          <label class="q-check"><input type="checkbox" name="reason" value="kpi"> ติดตาม KPI ของแต่ละแผนก</label>
+          <label class="q-check"><input type="checkbox" name="reason" value="board"> นำเสนอข้อมูลต่อผู้บริหาร / Board</label>
+          <label class="q-check"><input type="checkbox" name="reason" value="alert"> ตรวจสอบและแจ้งเตือนความผิดปกติ (Alert)</label>
+          <label class="q-check other-check"><input type="checkbox" name="reason" value="other"> อื่นๆ: <input type="text" class="inline-input" name="reasonOther" placeholder="ระบุ..."></label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">2.2 กลุ่มผู้ใช้งาน Dashboard หลัก (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="users" value="ceo"> CEO / MD / เจ้าของธุรกิจ</label>
+          <label class="q-check"><input type="checkbox" name="users" value="cfo"> CFO / ฝ่ายการเงิน</label>
+          <label class="q-check"><input type="checkbox" name="users" value="manager"> ผู้จัดการสาขา / ทีม</label>
+          <label class="q-check"><input type="checkbox" name="users" value="it"> ฝ่าย IT</label>
+          <label class="q-check"><input type="checkbox" name="users" value="sales"> ฝ่ายขาย / การตลาด</label>
+          <label class="q-check"><input type="checkbox" name="users" value="ops"> ฝ่ายปฏิบัติการ</label>
+          <label class="q-check other-check"><input type="checkbox" name="users" value="other"> อื่นๆ: <input type="text" class="inline-input" name="usersOther" placeholder="ระบุ..."></label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">2.3 KPI / ตัวชี้วัดสำคัญที่ต้องการติดตาม (กรอกอย่างน้อย 3 รายการ)</label>
+        <div id="kpiList">
+          <div class="kpi-row"><input type="text" class="q-input" name="kpi[]" placeholder="เช่น ยอดขายรายวัน, CPU Usage, จำนวน Incident"></div>
+          <div class="kpi-row"><input type="text" class="q-input" name="kpi[]" placeholder="เช่น Error Rate, Response Time"></div>
+          <div class="kpi-row"><input type="text" class="q-input" name="kpi[]" placeholder="เช่น จำนวนลูกค้าใหม่, Uptime %"></div>
+        </div>
+        <button type="button" class="btn-add-kpi" onclick="addKpi()">+ เพิ่ม KPI</button>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">2.4 ความถี่ในการดูข้อมูลที่ต้องการ</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="refreshRate" value="realtime"> Real-time (ทันที)</label>
+          <label class="q-radio"><input type="radio" name="refreshRate" value="15min"> ทุก 15–30 นาที</label>
+          <label class="q-radio"><input type="radio" name="refreshRate" value="hourly"> รายชั่วโมง</label>
+          <label class="q-radio"><input type="radio" name="refreshRate" value="daily"> รายวัน</label>
+          <label class="q-radio"><input type="radio" name="refreshRate" value="weekly"> รายสัปดาห์</label>
+          <label class="q-radio"><input type="radio" name="refreshRate" value="monthly"> รายเดือน</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 3 ════ -->
+    <section class="q-section" data-section="3">
+      <div class="section-header">
+        <span class="section-num">3</span>
+        <div>
+          <div class="section-title">แหล่งข้อมูลและระบบที่มีอยู่</div>
+          <div class="section-sub">Data Sources & Existing Systems</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">3.1 ระบบที่ใช้งานอยู่ในปัจจุบัน (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="systems" value="erp"> ERP (SAP / Oracle / Microsoft Dynamics)</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="crm"> CRM (Salesforce / HubSpot)</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="accounting"> ระบบบัญชี (Express / PEAK / QuickBooks)</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="pos"> ระบบ POS / ขายหน้าร้าน</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="hr"> ระบบ HR / เงินเดือน</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="wms"> ระบบ WMS / คลังสินค้า</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="gworkspace"> Google Workspace / Microsoft 365</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="db"> ฐานข้อมูล (SQL Server / MySQL / PostgreSQL)</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="splunk"> Splunk / SIEM</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="excel"> Excel / Google Sheets เท่านั้น</label>
+          <label class="q-check"><input type="checkbox" name="systems" value="none"> ไม่มีระบบดิจิทัล</label>
+          <label class="q-check other-check"><input type="checkbox" name="systems" value="other"> อื่นๆ: <input type="text" class="inline-input" name="systemsOther" placeholder="ระบุ..."></label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">3.2 จำนวนระบบต้นทางที่ต้องการรวมข้อมูล</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="sourceSystems" value="1"> 1 ระบบ</label>
+          <label class="q-radio"><input type="radio" name="sourceSystems" value="2-3"> 2–3 ระบบ</label>
+          <label class="q-radio"><input type="radio" name="sourceSystems" value="4-6"> 4–6 ระบบ</label>
+          <label class="q-radio"><input type="radio" name="sourceSystems" value="6+"> มากกว่า 6 ระบบ</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">3.3 ระบบที่มีอยู่รองรับ API หรือไม่</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="hasApi" value="all"> ใช่ ทุกระบบ</label>
+          <label class="q-radio"><input type="radio" name="hasApi" value="some"> ใช่ บางระบบ</label>
+          <label class="q-radio"><input type="radio" name="hasApi" value="unknown"> ไม่แน่ใจ</label>
+          <label class="q-radio"><input type="radio" name="hasApi" value="none"> ไม่มี</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">3.4 ข้อมูลปัจจุบันจัดเก็บในรูปแบบใด</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="dataFormat" value="db"> ฐานข้อมูล (Database)</label>
+          <label class="q-check"><input type="checkbox" name="dataFormat" value="excel"> Excel / Spreadsheet</label>
+          <label class="q-check"><input type="checkbox" name="dataFormat" value="cloud"> ระบบ Cloud</label>
+          <label class="q-check"><input type="checkbox" name="dataFormat" value="paper"> เอกสารกระดาษ</label>
+          <label class="q-check"><input type="checkbox" name="dataFormat" value="mixed"> ผสมหลายรูปแบบ</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 4 ════ -->
+    <section class="q-section" data-section="4">
+      <div class="section-header">
+        <span class="section-num">4</span>
+        <div>
+          <div class="section-title">โครงสร้างพื้นฐาน IT</div>
+          <div class="section-sub">IT Infrastructure</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">4.1 ระบบปัจจุบันรันบน</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="infra" value="cloud"> Cloud (AWS / Azure / GCP)</label>
+          <label class="q-radio"><input type="radio" name="infra" value="onprem"> On-premise Server (ภายในองค์กร)</label>
+          <label class="q-radio"><input type="radio" name="infra" value="hybrid"> Hybrid</label>
+          <label class="q-radio"><input type="radio" name="infra" value="none"> ไม่มี Server</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">4.2 ทีม IT ภายในองค์กร</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="itTeam" value="yes"> มีทีม IT ภายใน</label>
+          <label class="q-radio"><input type="radio" name="itTeam" value="outsource"> ใช้ Outsource / Vendor</label>
+          <label class="q-radio"><input type="radio" name="itTeam" value="none"> ไม่มีเลย</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">4.3 อุปกรณ์ที่ต้องการเข้าถึง Dashboard (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="devices" value="pc"> คอมพิวเตอร์ / โน้ตบุ๊ก</label>
+          <label class="q-check"><input type="checkbox" name="devices" value="tablet"> Tablet</label>
+          <label class="q-check"><input type="checkbox" name="devices" value="mobile"> โทรศัพท์มือถือ</label>
+          <label class="q-check"><input type="checkbox" name="devices" value="tv"> TV / Display ขนาดใหญ่ (Digital Signage)</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">4.4 ต้องการเข้าถึงจากภายนอกองค์กรหรือไม่</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="remoteAccess" value="yes"> ใช่ (Remote Access)</label>
+          <label class="q-radio"><input type="radio" name="remoteAccess" value="no"> ไม่ (เฉพาะเครือข่ายภายในเท่านั้น)</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 5 ════ -->
+    <section class="q-section" data-section="5">
+      <div class="section-header">
+        <span class="section-num">5</span>
+        <div>
+          <div class="section-title">ความต้องการด้าน Dashboard</div>
+          <div class="section-sub">Dashboard Requirements</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">5.1 ประเภท Dashboard ที่ต้องการ (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks two-col">
+          <label class="q-check"><input type="checkbox" name="dashType" value="executive"> Executive Dashboard (ภาพรวมผู้บริหาร)</label>
+          <label class="q-check"><input type="checkbox" name="dashType" value="operational"> Operational Dashboard (งานประจำวัน)</label>
+          <label class="q-check"><input type="checkbox" name="dashType" value="financial"> Financial Dashboard (การเงิน)</label>
+          <label class="q-check"><input type="checkbox" name="dashType" value="sales"> Sales Dashboard (ยอดขาย / ลูกค้า)</label>
+          <label class="q-check"><input type="checkbox" name="dashType" value="hr"> HR Dashboard (พนักงาน)</label>
+          <label class="q-check"><input type="checkbox" name="dashType" value="it"> IT Infrastructure Dashboard (ระบบ IT)</label>
+          <label class="q-check other-check"><input type="checkbox" name="dashType" value="other"> อื่นๆ: <input type="text" class="inline-input" name="dashTypeOther" placeholder="ระบุ..."></label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">5.2 ประเภทกราฟ / การแสดงผลที่ต้องการ (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks two-col">
+          <label class="q-check"><input type="checkbox" name="chartType" value="bar"> Bar Chart / กราฟแท่ง</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="line"> Line Chart / กราฟเส้น</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="pie"> Pie / Donut Chart</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="map"> Map / แผนที่</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="kpi"> KPI Card / ตัวเลขสรุป</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="table"> Table / ตาราง</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="heatmap"> Heatmap</label>
+          <label class="q-check"><input type="checkbox" name="chartType" value="gauge"> Gauge / Speedometer</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">5.3 ต้องการระบบแจ้งเตือน (Alert / Notification)</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="alert" value="email"> Email</label>
+          <label class="q-check"><input type="checkbox" name="alert" value="line"> LINE / LINE OA</label>
+          <label class="q-check"><input type="checkbox" name="alert" value="sms"> SMS</label>
+          <label class="q-check"><input type="checkbox" name="alert" value="none"> ไม่ต้องการ</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">5.4 ต้องการ Role-based Access (สิทธิ์ตามตำแหน่ง)</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="rbac" value="yes"> ใช่ (แยกสิทธิ์ตามตำแหน่ง / แผนก)</label>
+          <label class="q-radio"><input type="radio" name="rbac" value="no"> ไม่จำเป็น (ทุกคนเห็นเหมือนกัน)</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">5.5 ต้องการ Export ข้อมูลออกมา</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="export" value="pdf"> PDF</label>
+          <label class="q-check"><input type="checkbox" name="export" value="excel"> Excel</label>
+          <label class="q-check"><input type="checkbox" name="export" value="csv"> CSV</label>
+          <label class="q-check"><input type="checkbox" name="export" value="none"> ไม่จำเป็น</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 6 ════ -->
+    <section class="q-section" data-section="6">
+      <div class="section-header">
+        <span class="section-num">6</span>
+        <div>
+          <div class="section-title">ความพร้อมขององค์กร</div>
+          <div class="section-sub">Organizational Readiness</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">6.1 ระดับความเข้าใจด้าน Data ของทีมงาน</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="dataMaturity" value="1"> ต่ำมาก — ไม่คุ้นเคยกับข้อมูลดิจิทัล</label>
+          <label class="q-radio"><input type="radio" name="dataMaturity" value="2"> ต่ำ — ใช้ Excel เป็น</label>
+          <label class="q-radio"><input type="radio" name="dataMaturity" value="3"> ปานกลาง — เคยใช้ BI Tools มาบ้าง</label>
+          <label class="q-radio"><input type="radio" name="dataMaturity" value="4"> สูง — มีประสบการณ์ด้าน Data Analysis</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">6.2 ปัญหาหลักด้านข้อมูลที่พบ (เลือกได้มากกว่า 1)</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="dataProblems" value="scattered"> ข้อมูลกระจัดกระจายหลายระบบ</label>
+          <label class="q-check"><input type="checkbox" name="dataProblems" value="inaccurate"> ข้อมูลไม่ถูกต้อง / ไม่น่าเชื่อถือ</label>
+          <label class="q-check"><input type="checkbox" name="dataProblems" value="delayed"> ข้อมูลไม่ทันสมัย / ล่าช้า</label>
+          <label class="q-check"><input type="checkbox" name="dataProblems" value="nostandard"> ไม่มีมาตรฐานการบันทึกข้อมูล</label>
+          <label class="q-check"><input type="checkbox" name="dataProblems" value="noskill"> ขาดบุคลากรที่วิเคราะห์ข้อมูลได้</label>
+          <label class="q-check"><input type="checkbox" name="dataProblems" value="none"> ไม่มีปัญหา</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">6.3 สถานะ Dashboard ปัจจุบัน</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="currentDash" value="none"> ไม่มีเลย (เริ่มต้นใหม่)</label>
+          <label class="q-radio"><input type="radio" name="currentDash" value="excel"> มี Excel / Google Sheets อยู่บ้าง</label>
+          <label class="q-radio"><input type="radio" name="currentDash" value="failed"> เคยทำ BI แต่ใช้งานไม่ได้ผล</label>
+          <label class="q-radio"><input type="radio" name="currentDash" value="existing"> มี Dashboard อยู่แล้ว ต้องการพัฒนาเพิ่ม</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 7 ════ -->
+    <section class="q-section" data-section="7">
+      <div class="section-header">
+        <span class="section-num">7</span>
+        <div>
+          <div class="section-title">งบประมาณและระยะเวลา</div>
+          <div class="section-sub">Budget & Timeline</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">7.1 งบประมาณที่เตรียมไว้ (ต่อปี)</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="budget" value="<100k"> ต่ำกว่า 100,000 บาท</label>
+          <label class="q-radio"><input type="radio" name="budget" value="100k-500k"> 100,000 – 500,000 บาท</label>
+          <label class="q-radio"><input type="radio" name="budget" value="500k-1m"> 500,000 – 1,000,000 บาท</label>
+          <label class="q-radio"><input type="radio" name="budget" value="1m-3m"> 1,000,000 – 3,000,000 บาท</label>
+          <label class="q-radio"><input type="radio" name="budget" value=">3m"> มากกว่า 3,000,000 บาท</label>
+          <label class="q-radio"><input type="radio" name="budget" value="tbd"> ยังไม่ได้กำหนด</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">7.2 รูปแบบการจัดซื้อที่ต้องการ</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="procure" value="license"> ซื้อ License ครั้งเดียว</label>
+          <label class="q-radio"><input type="radio" name="procure" value="saas"> Subscription รายเดือน / ปี (SaaS)</label>
+          <label class="q-radio"><input type="radio" name="procure" value="custom"> พัฒนาระบบเอง (Custom Development)</label>
+          <label class="q-radio"><input type="radio" name="procure" value="tbd"> ยังไม่ตัดสินใจ</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label required">7.3 ต้องการให้โครงการแล้วเสร็จภายใน</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="timeline" value="1-3m"> 1–3 เดือน</label>
+          <label class="q-radio"><input type="radio" name="timeline" value="3-6m"> 3–6 เดือน</label>
+          <label class="q-radio"><input type="radio" name="timeline" value="6-12m"> 6–12 เดือน</label>
+          <label class="q-radio"><input type="radio" name="timeline" value=">1y"> มากกว่า 1 ปี</label>
+          <label class="q-radio"><input type="radio" name="timeline" value="tbd"> ยังไม่กำหนด</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">7.4 Milestone หรือ Deadline สำคัญ</label>
+        <textarea class="q-textarea" name="milestone" placeholder="เช่น ต้องการ Demo ภายใน Q1, มีงาน Board ใน มีนาคม..."></textarea>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 8 ════ -->
+    <section class="q-section" data-section="8">
+      <div class="section-header">
+        <span class="section-num">8</span>
+        <div>
+          <div class="section-title">ความต้องการพิเศษ</div>
+          <div class="section-sub">Special Requirements & Additional Info</div>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">8.1 Tool / Platform ที่ต้องการหรือคุ้นเคย</label>
+        <div class="q-checks two-col">
+          <label class="q-check"><input type="checkbox" name="tool" value="powerbi"> Microsoft Power BI</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="tableau"> Tableau</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="looker"> Looker / Looker Studio</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="grafana"> Grafana</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="splunk"> Splunk Dashboard</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="metabase"> Metabase</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="custom"> Custom Web (React / Vue)</label>
+          <label class="q-check"><input type="checkbox" name="tool" value="none"> ยังไม่มีความต้องการเฉพาะ</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">8.2 ต้องการ Training สำหรับทีมงาน</label>
+        <div class="q-checks">
+          <label class="q-check"><input type="checkbox" name="training" value="it"> IT / Developer</label>
+          <label class="q-check"><input type="checkbox" name="training" value="user"> ผู้ใช้งานทั่วไป</label>
+          <label class="q-check"><input type="checkbox" name="training" value="both"> ทั้งสองกลุ่ม</label>
+          <label class="q-check"><input type="checkbox" name="training" value="none"> ไม่จำเป็น</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">8.3 ต้องการ Support / Maintenance หลังติดตั้ง</label>
+        <div class="q-radios">
+          <label class="q-radio"><input type="radio" name="support" value="24x7"> SLA 24/7</label>
+          <label class="q-radio"><input type="radio" name="support" value="business"> เวลาทำการ</label>
+          <label class="q-radio"><input type="radio" name="support" value="self"> ดูแลเองได้</label>
+        </div>
+      </div>
+
+      <div class="q-group">
+        <label class="q-label">8.4 ข้อกังวล / ความเสี่ยง / ข้อมูลเพิ่มเติม</label>
+        <textarea class="q-textarea" name="notes" placeholder="กรอกข้อกังวล ความเสี่ยง หรือข้อมูลเพิ่มเติมที่อยากแจ้ง..."></textarea>
+      </div>
+    </section>
+
+  </form>
+</main>
+
+<!-- NAV BUTTONS -->
+<div class="q-nav">
+  <button class="btn-back" id="btnBack" onclick="prevSection()" style="visibility:hidden">← ย้อนกลับ</button>
+  <div class="q-nav-info">
+    <span id="sectionLabel">หมวดที่ 1 จาก 8</span>
+  </div>
+  <button class="btn-next" id="btnNext" onclick="nextSection()">ถัดไป →</button>
+  <button class="btn-submit" id="btnSubmit" onclick="submitForm()" style="display:none">✓ สรุปผลและ Generate Plan</button>
+</div>
+
+<!-- RESULT MODAL -->
+<div class="modal-overlay" id="resultModal" style="display:none">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2>📊 แผน IT Dashboard สำหรับองค์กรของคุณ</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="resultBody"></div>
+    <div class="modal-footer">
+      <button class="btn-download" onclick="downloadJSON()">⬇ ดาวน์โหลด JSON</button>
+      <button class="btn-download" onclick="window.print()">🖨 พิมพ์</button>
+      <button class="btn-back-form" onclick="closeModal()">← แก้ไขแบบสอบถาม</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/questionnaire.js"></script>
+</body>
+</html>
