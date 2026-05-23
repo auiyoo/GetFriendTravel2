@@ -6,6 +6,7 @@ const http = require('http');
 const path = require('path');
 const { Server } = require('socket.io');
 const connectDB = require('./src/config/db');
+const { init: initMockStore } = require('./src/data/mockStore');
 
 const app = express();
 const server = http.createServer(app);
@@ -18,8 +19,11 @@ const io = new Server(server, {
   }
 });
 
-// Connect DB
-connectDB();
+// Connect DB (non-fatal) then initialize mock store
+connectDB().then(() => {
+  // Always init mock store — it's a no-op when DB is connected
+  initMockStore();
+});
 
 // Middleware
 app.use(cors({
