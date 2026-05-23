@@ -1,6 +1,94 @@
-# IT Executive Dashboard
+# ✈️ GetFriendTravel - ระบบหาเพื่อนเที่ยว
 
-Dashboard สำหรับ Executive ด้าน IT — Health Score, Alerts, Infrastructure, KPI รองรับ **Splunk** และ **Mock Data**
+> แพลตฟอร์ม Full-Stack สำหรับหาเพื่อนร่วมเดินทาง ระบบ Matching อัจฉริยะ วางแผนทริปอัตโนมัติ และเชื่อมต่อบริษัททัวร์
+
+## 🚀 Features
+
+| Feature | รายละเอียด |
+|---------|-----------|
+| 🔐 ยืนยันตัวตน | ยืนยันเบอร์โทร, Facebook, Line ID |
+| 🌍 ค้นหาปลายทาง | 12 ประเทศ + 11 จังหวัดไทย พร้อมข้อมูลสถานที่ |
+| 🤖 Smart Suggestions | เลือกประเทศ/จังหวัด → แนะนำสถานที่น่าสนใจทันที |
+| 💡 AI Matching | จับคู่คนที่ไปจุดเดียวกัน ช่วงเวลาเดียวกัน งบใกล้เคียง |
+| 👥 Group System | ขอเข้าร่วม รับ/ปฏิเสธ จัดกลุ่ม |
+| 🗺️ Trip Plan | สร้างแผนการเดินทาง Day-by-Day อัตโนมัติ |
+| 🧳 Tour Company | เชื่อมต่อ 5 บริษัททัวร์พาร์ทเนอร์ จอง Private Tour |
+| 📱 Responsive | รองรับมือถือและเดสก์ท็อป |
+
+## 🛠️ Tech Stack
+
+```
+Frontend:  React 18 + Vite + TailwindCSS + Framer Motion
+Backend:   Node.js + Express + Socket.io
+Database:  MongoDB + Mongoose
+Auth:      JWT Token
+State:     Zustand
+```
+
+## 📁 Project Structure
+
+```
+GetFriendTravel/
+├── backend/
+│   ├── server.js
+│   ├── src/
+│   │   ├── config/db.js
+│   │   ├── models/            # User, TripRequest, Match, TourCompany
+│   │   ├── routes/            # auth, users, trips, matches, destinations, plans, tours
+│   │   ├── services/          # matchingService, planGenerator
+│   │   └── data/              # destinations.js, seed.js
+│   └── package.json
+└── frontend/
+    ├── src/
+    │   ├── pages/             # Landing, Login, Register, Dashboard, CreateTrip, Discover...
+    │   ├── components/        # Navbar
+    │   ├── store/             # authStore (Zustand)
+    │   └── services/          # api.js (Axios)
+    └── package.json
+```
+
+## ⚡ Quick Start
+
+### 1. Backend
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+# แก้ MONGODB_URI ใน .env
+npm run dev
+```
+
+### 2. Seed Data
+
+```bash
+npm run seed
+```
+
+Demo: `somchai@demo.com` / `malee@demo.com` / `keerati@demo.com` (รหัส: password123)
+
+### 3. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+เปิด http://localhost:5173
+
+## 📊 Matching Algorithm
+
+คะแนน Compatibility (100 คะแนน): ปลายทาง 40 + วันที่ทับซ้อน 30 + งบประมาณ 20 + สไตล์ 10
+
+## 🌍 ปลายทางที่รองรับ
+
+**ต่างประเทศ:** 🇯🇵🇰🇷🇫🇷🇮🇹🇸🇬🇻🇳🇲🇻🇨🇭🇦🇺🇺🇸🇹🇷🇦🇪 (12 ประเทศ)
+
+**ในประเทศ:** กรุงเทพฯ เชียงใหม่ ภูเก็ต กระบี่ เกาะสมุย ปาย เชียงราย กาญจนบุรี พัทยา หัวหิน อยุธยา
+
+---
+Made with ❤️ for Thai Travelers
 
 ---
 
