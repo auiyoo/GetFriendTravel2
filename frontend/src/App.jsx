@@ -27,7 +27,7 @@ export default function App() {
   useEffect(() => { initAuth() }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-dark-900">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
