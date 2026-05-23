@@ -1,18 +1,18 @@
 import axios from 'axios';
 
+// In production (Railway), frontend & backend run on same origin
+// In development, Vite proxy handles /api → localhost:5000
 const api = axios.create({
   baseURL: '/api',
-  timeout: 10000,
+  timeout: 15000,
   headers: { 'Content-Type': 'application/json' }
 });
 
-// Request interceptor
 api.interceptors.request.use(
   (config) => config,
   (error) => Promise.reject(error)
 );
 
-// Response interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
